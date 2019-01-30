@@ -8,18 +8,18 @@ class Die():
 
 #initialize all dice in game
 
-blueDie = Die()
-greenDie = Die()
 redDie = Die()
 yellowDie = Die()
+greenDie = Die()
+blueDie = Die()
 whiteDie1 = Die()
 whiteDie2 = Die()
 
 def playerRollDice():
-    blueDie.roll()
-    greenDie.roll()
     redDie.roll()
     yellowDie.roll()
+    greenDie.roll()
+    blueDie.roll()
     whiteDie1.roll()
     whiteDie2.roll()
 
@@ -34,10 +34,10 @@ def colorDiceCombo(die):
 
 def allColorCombos():
     allColorOptions = []
-    allColorOptions.append(colorDiceCombo(blueDie))
-    allColorOptions.append(colorDiceCombo(greenDie))
     allColorOptions.append(colorDiceCombo(redDie))
     allColorOptions.append(colorDiceCombo(yellowDie))
+    allColorOptions.append(colorDiceCombo(greenDie))
+    allColorOptions.append(colorDiceCombo(blueDie))
     return allColorOptions
 
 def printCombos():
