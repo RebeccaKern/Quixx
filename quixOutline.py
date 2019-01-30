@@ -26,37 +26,23 @@ def playerRollDice():
 def whiteDiceCombo():
     return whiteDie1.value + whiteDie2.value 
 
-def blueDiceComboChoices():
-    blueOptions = []
-    blueOptions.append(blueDie.value + whiteDie1.value)
-    blueOptions.append(blueDie.value + whiteDie2.value)
-    return blueOptions
+def colorDiceCombo(die):
+    options = []
+    options.append(die.value + whiteDie1.value)
+    options.append(die.value + whiteDie2.value)
+    return options
 
-def greenDiceComboChoices():
-    greenOptions = []
-    greenOptions.append(greenDie.value + whiteDie1.value)
-    greenOptions.append(greenDie.value + whiteDie2.value)
-    return greenOptions
-
-def redDiceComboChoices():
-    redOptions = []
-    redOptions.append(redDie.value + whiteDie1.value)
-    redOptions.append(redDie.value + whiteDie2.value)
-    return redOptions
-
-def yellowDiceComboChoices():
-    yellowOptions = []
-    yellowOptions.append(yellowDie.value + whiteDie1.value)
-    yellowOptions.append(yellowDie.value + whiteDie2.value)
-    return yellowOptions
+def allColorCombos():
+    allColorOptions = []
+    allColorOptions.append(colorDiceCombo(blueDie))
+    allColorOptions.append(colorDiceCombo(greenDie))
+    allColorOptions.append(colorDiceCombo(redDie))
+    allColorOptions.append(colorDiceCombo(yellowDie))
+    return allColorOptions
 
 def printCombos():
     print(whiteDiceCombo())
-    print(blueDiceComboChoices())
-    print(greenDiceComboChoices())
-    print(redDiceComboChoices())
-    print(yellowDiceComboChoices())
-
+    print(allColorCombos())
 
 playerRollDice()
 printCombos()
