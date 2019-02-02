@@ -47,17 +47,6 @@ def printCombos():
 playerRollDice()
 printCombos()
 
-def initializeBoard():
-    board = []
-    redRow = increasingRow()
-    yellowRow = increasingRow()
-    greenRow = decreasingRow()
-    blueRow = decreasingRow()
-    board.append(redRow)
-    board.append(yellowRow)
-    board.append(greenRow)
-    board.append(blueRow)
-    return board
 
 def increasingRow():
     row = []
@@ -71,4 +60,60 @@ def decreasingRow():
         row.append(14-i)
     return row
 
-print(initializeBoard())
+
+class Board():
+              
+    def __init__ (self):
+        self.board = []
+        redRow = increasingRow()
+        yellowRow = increasingRow()
+        greenRow = decreasingRow()
+        blueRow = decreasingRow()
+        self.board.append(redRow)
+        self.board.append(yellowRow)
+        self.board.append(greenRow)
+        self.board.append(blueRow)
+
+    def canCheckBox(self, color, number):
+        if color == 'red':
+            row = 0
+        if color == 'yellow':
+            row = 1
+        if color == 'green':
+            row = 2
+        if color == 'blue':
+            row = 3
+        if number in self.board[row]:
+            return True
+        return False
+
+    def fillPrev(self, row, number):
+        for i in range(0, number):
+            if self.board[row][i] != 'X':
+                self.board[row][i] = 'Z'
+        return self.board
+
+    def checkBox(self, color, number):
+        if color == 'red':
+            row = 0
+        if color == 'yellow':
+            row = 1
+        if color == 'green':
+            row = 2
+        if color == 'blue':
+            row = 3
+        num = self.board[row].index(number)
+        self.board[row][num] = 'X'
+        self.fillPrev(row, num)
+        return self.board
+
+
+board1 = Board()
+
+print(board1.board)
+
+board1.checkBox('red', 8)
+
+print(board1.board)
+
+
