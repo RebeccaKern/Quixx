@@ -52,12 +52,16 @@ def increasingRow():
     row = []
     for i in range(2,13):
         row.append(i)
+    #to indicate whether or not row is locked
+    row.append(False)
     return row
 
 def decreasingRow():
     row = []
     for i in range(2,13):
         row.append(14-i)
+    #to indicate whether or not row is locked
+    row.append(False)
     return row
 
 
@@ -105,15 +109,33 @@ class Board():
         num = self.board[row].index(number)
         self.board[row][num] = 'X'
         self.fillPrev(row, num)
+        self.canLockRow(row)
         return self.board
 
+    def numCellsFilled(self, row):
+        return self.board[row].count('X')
+
+    def finalCellInRowFilled(self, row):
+        return self.board[row][-2] == 'X'
+
+    def canLockRow(self, row):
+        if (self.numCellsFilled(row) == 5) and self.finalCellInRowFilled(row):
+            return True
+        return False
+
+    def lockRow(self):
+        row[-1] = True
 
 board1 = Board()
 
 print(board1.board)
 
+board1.checkBox('red', 6)
+board1.checkBox('red', 7)
 board1.checkBox('red', 8)
-
+board1.checkBox('red', 9)
+board1.checkBox('red', 12)
 print(board1.board)
 
+print(board1.canLockRow(0))
 
