@@ -21,3 +21,5 @@ board1.checkBox('red', 12)
 print(board1.board)
 
 print(board1.canLockRow(0))
+
+print(board1.scoreBoard())

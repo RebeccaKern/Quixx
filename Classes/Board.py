@@ -2,6 +2,8 @@ class Board():
               
     def __init__ (self):
         self.board = []
+        strikes = 0
+        self.scoreDict = {0:0, 1:1, 2:3, 3:6, 4:10, 5:15, 6:21, 7:28, 8:36, 9:45, 10:55, 11:66, 12:78}
         redRow = self.increasingRow()
         yellowRow = self.increasingRow()
         greenRow = self.decreasingRow()
@@ -26,6 +28,9 @@ class Board():
         #to indicate whether or not row is locked
         row.append(False)
         return row
+
+    def takeStrike(self):
+        self.strikes += 1
 
     def canCheckBox(self, color, number):
         if color == 'red':
@@ -74,3 +79,18 @@ class Board():
 
     def lockRow(self):
         row[-1] = True
+
+    def scoreRow(self, row):
+        score = 0
+        a = self.numCellsFilled(row)
+        score += self.scoreDict[a]
+        return score
+
+    def scoreBoard(self):
+        totalScore = 0
+        for rowNum in range(0, len(self.board)):
+            totalScore += self.scoreRow(rowNum)
+        return totalScore
+
+
+
